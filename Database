@@ -40,6 +40,24 @@ CREATE TABLE Seats (
     Type NVARCHAR(50) NOT NULL,
     FOREIGN KEY (TheaterId) REFERENCES Theaters(Id)
 );
+-- Create Table Statement
+CREATE TABLE ShowTimes (
+    Id INT PRIMARY KEY IDENTITY,
+    Time NVARCHAR(50) NOT NULL,
+    TheatreId INT NOT NULL,
+    MovieId INT NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (TheatreId) REFERENCES Theaters(Id),
+    FOREIGN KEY (MovieId) REFERENCES Movies(Id)
+);
+
+-- Insert Statements with Dummy Values
+INSERT INTO ShowTimes (Time, TheatreId, MovieId, Name)
+VALUES 
+('19:00', 1, 1, 'Evening Show'),
+('20:00', 2, 2, 'Night Show'),
+('18:30', 3, 3, 'Matinee Show');
+
 -- Movies Table
 INSERT INTO Movies (Title, Genre, ReleaseDate, Duration)
 VALUES 
