@@ -51,3 +51,35 @@ CREATE TABLE Seat (
     FOREIGN KEY (ShowTime, TheatreId, MovieId) REFERENCES Show(Time, TheatreId, MovieId) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (TicketId) REFERENCES Ticket(Id) ON UPDATE CASCADE ON DELETE SET NULL
 );
+
+-- Insert data into Movie table
+INSERT INTO Movie (Id, Name, ImbdRating, Category, Genre, ReleaseDate, ActorName, ActressName, ThemePhotoPath) VALUES
+(1, 'Inception', 8.8, 'Sci-Fi', 'Thriller', '2010-07-16', 'Leonardo DiCaprio', 'Ellen Page', 'path/to/inception.jpg'),
+(2, 'The Dark Knight', 9.0, 'Action', 'Drama', '2008-07-18', 'Christian Bale', 'Maggie Gyllenhaal', 'path/to/darkknight.jpg');
+
+-- Insert data into Theatre table
+INSERT INTO Theatre (Id, Name, City) VALUES
+(1, 'Regal Cinemas', 'New York'),
+(2, 'AMC Theatres', 'Los Angeles');
+
+-- Insert data into Show table
+INSERT INTO Show (Time, TheatreId, MovieId) VALUES
+('18:00', 1, 1),
+('21:00', 1, 1),
+('18:00', 2, 2),
+('21:00', 2, 2);
+
+-- Insert data into Ticket table
+INSERT INTO Ticket (Id, UserName, NumberOfSeats, ShowTime, TheatreId, MovieId) VALUES
+(1, 'JohnDoe', 2, '18:00', 1, 1),
+(2, 'JaneSmith', 3, '21:00', 2, 2);
+
+-- Insert data into Seat table
+INSERT INTO Seat (Number, ShowTime, TheatreId, MovieId, TicketId, Availability) VALUES
+(1, '18:00', 1, 1, 1, 'Booked'),
+(2, '18:00', 1, 1, 1, 'Booked'),
+(3, '18:00', 1, 1, NULL, 'Available'),
+(4, '21:00', 2, 2, 2, 'Booked'),
+(5, '21:00', 2, 2, 2, 'Booked'),
+(6, '21:00', 2, 2, 2, 'Booked'),
+(7, '21:00', 2, 2, NULL, 'Available');
