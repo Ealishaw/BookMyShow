@@ -6,6 +6,7 @@ CREATE TABLE Movie (
     Category NVARCHAR(50) NOT NULL,
     Genre NVARCHAR(50) NOT NULL,
     ReleaseDate DATETIME NOT NULL,
+    Duration int not Null,
     ActorName NVARCHAR(255),
     ActressName NVARCHAR(255),
     ThemePhotoPath NVARCHAR(255)
@@ -23,7 +24,6 @@ CREATE TABLE Show (
     Time NVARCHAR(50) NOT NULL,
     TheatreId INT NOT NULL,
     MovieId INT NOT NULL,
-    PRIMARY KEY (Time, TheatreId, MovieId),
     FOREIGN KEY (TheatreId) REFERENCES Theatre(Id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (MovieId) REFERENCES Movie(Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -41,18 +41,18 @@ CREATE TABLE Ticket (
 
 -- Create Seat table
 CREATE TABLE Seat (
-    Number INT NOT NULL,
+    Number INT PRIMARY KEY IDENTITY(1,1),
     ShowTime NVARCHAR(50) NOT NULL,
     TheatreId INT NOT NULL,
     MovieId INT NOT NULL,
     TicketId INT,
     Availability NVARCHAR(50) NOT NULL,
-    PRIMARY KEY (Number, ShowTime, TheatreId, MovieId),
     FOREIGN KEY (ShowTime, TheatreId, MovieId) REFERENCES Show(Time, TheatreId, MovieId) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (TicketId) REFERENCES Ticket(Id) ON UPDATE CASCADE ON DELETE SET NULL
 );
 -- Create ShowMovieModel table
 CREATE TABLE ShowMovieModel (
+Id int PRIMARY KEY IDENTITY(1,1),
     Time NVARCHAR(50) NOT NULL,
     TheatreId INT NOT NULL,
     MovieId INT NOT NULL,
