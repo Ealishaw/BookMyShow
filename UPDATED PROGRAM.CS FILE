@@ -40,3 +40,25 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+
+
+namespace Book_My_Show. Models
+
+public string Time { get; set; }
+
+[ForeignKeyAttribute("Theatre")]
+
+public int TheatreId { get; set; }
+
+
+
+[ForeignKeyAttribute("Movie")]
+
+
+public int MovieId { get; set; }
+
+O public string Name { get; set; }
+
+}
+}
