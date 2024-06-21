@@ -1,8 +1,8 @@
 -- Create Movie table
 CREATE TABLE Movie (
-    Id INT PRIMARY KEY,
+    Id INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(255) NOT NULL,
-    ImbdRating DECIMAL(3, 1) NOT NULL,
+    ImdbRating DECIMAL(3, 1) NOT NULL,
     Category NVARCHAR(50) NOT NULL,
     Genre NVARCHAR(50) NOT NULL,
     ReleaseDate DATETIME NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE Movie (
 
 -- Create Theatre table
 CREATE TABLE Theatre (
-    Id INT PRIMARY KEY,
+    Id INT PRIMARY KEY IDENTITY(1,1),
     Name NVARCHAR(255) NOT NULL,
     City NVARCHAR(50) NOT NULL
 );
@@ -30,7 +30,7 @@ CREATE TABLE Show (
 
 -- Create Ticket table
 CREATE TABLE Ticket (
-    Id INT PRIMARY KEY,
+    Id INT PRIMARY KEY IDENTITY(1,1),
     UserName NVARCHAR(255),
     NumberOfSeats INT,
     ShowTime NVARCHAR(50) NOT NULL,
