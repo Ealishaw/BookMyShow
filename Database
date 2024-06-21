@@ -40,3 +40,47 @@ CREATE TABLE Seats (
     Type NVARCHAR(50) NOT NULL,
     FOREIGN KEY (TheaterId) REFERENCES Theaters(Id)
 );
+-- Movies Table
+INSERT INTO Movies (Title, Genre, ReleaseDate, Duration)
+VALUES 
+('Inception', 'Sci-Fi', '2010-07-16', 148),
+('The Godfather', 'Crime', '1972-03-24', 175),
+('Pulp Fiction', 'Crime', '1994-10-14', 154);
+
+-- Users Table
+INSERT INTO Users (UserName, Email, PasswordHash)
+VALUES 
+('john_doe', 'john@example.com', 'e99a18c428cb38d5f260853678922e03'),
+('jane_smith', 'jane@example.com', '2b22e2d68cf51d9bc1d178c3d24880c7'),
+('alex_jones', 'alex@example.com', '3f27e2d68cf51d9bc1d178c3d24880c8');
+
+-- Theaters Table
+INSERT INTO Theaters (Name, Location)
+VALUES 
+('Regal Cinemas', '123 Main St, Springfield'),
+('AMC Theatres', '456 Oak St, Metropolis'),
+('Cineplex', '789 Pine St, Gotham');
+
+-- Seats Table
+INSERT INTO Seats (TheaterId, SeatNumber, Type)
+VALUES 
+(1, 'A1', 'Regular'),
+(1, 'A2', 'Regular'),
+(1, 'A3', 'Regular'),
+(2, 'B1', 'VIP'),
+(2, 'B2', 'VIP'),
+(2, 'B3', 'VIP');
+
+-- Shows Table
+INSERT INTO Shows (MovieId, TheaterId, ShowTime, Price)
+VALUES 
+(1, 1, '2024-07-01 19:00:00', 12.50),
+(2, 2, '2024-07-02 20:00:00', 15.00),
+(3, 3, '2024-07-03 18:30:00', 10.00);
+
+-- Bookings Table
+INSERT INTO Bookings (UserId, ShowId, BookingDate, TotalAmount)
+VALUES 
+(1, 1, '2024-06-20 10:00:00', 12.50),
+(2, 2, '2024-06-20 11:00:00', 15.00),
+(3, 3, '2024-06-20 12:00:00', 10.00);
