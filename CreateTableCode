@@ -1,0 +1,11 @@
+CREATE TABLE Movie (
+    Id INT PRIMARY KEY,
+    Name NVARCHAR(255) NOT NULL,
+    ImbdRating DECIMAL(3, 1) NOT NULL,
+    Category NVARCHAR(50) NOT NULL,
+    Genre NVARCHAR(50) NOT NULL,
+    ReleaseDate DATETIME NOT NULL,
+    ActorName NVARCHAR(255),
+    ActressName NVARCHAR(255),
+    ThemePhotoPath NVARCHAR(255)
+);
