@@ -1,26 +1,53 @@
--- Create MovieCategory table
-CREATE TABLE MovieCategory (
-    Id INT PRIMARY KEY,
-    Name NVARCHAR(50) NOT NULL
-);
-
--- Create MovieGenre table
-CREATE TABLE MovieGenre (
-    Id INT PRIMARY KEY,
-    Name NVARCHAR(50) NOT NULL
-);
-
--- Create Movie table with foreign keys
+-- Create Movie table
 CREATE TABLE Movie (
     Id INT PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL,
     ImbdRating DECIMAL(3, 1) NOT NULL,
-    CategoryId INT NOT NULL,
-    GenreId INT NOT NULL,
+    Category NVARCHAR(50) NOT NULL,
+    Genre NVARCHAR(50) NOT NULL,
     ReleaseDate DATETIME NOT NULL,
     ActorName NVARCHAR(255),
     ActressName NVARCHAR(255),
-    ThemePhotoPath NVARCHAR(255),
-    FOREIGN KEY (CategoryId) REFERENCES MovieCategory(Id) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (GenreId) REFERENCES MovieGenre(Id) ON UPDATE CASCADE ON DELETE CASCADE
+    ThemePhotoPath NVARCHAR(255)
+);
+
+-- Create Theatre table
+CREATE TABLE Theatre (
+    Id INT PRIMARY KEY,
+    Name NVARCHAR(255) NOT NULL,
+    City NVARCHAR(50) NOT NULL
+);
+
+-- Create Show table
+CREATE TABLE Show (
+    Time NVARCHAR(50) NOT NULL,
+    TheatreId INT NOT NULL,
+    MovieId INT NOT NULL,
+    PRIMARY KEY (Time, TheatreId, MovieId),
+    FOREIGN KEY (TheatreId) REFERENCES Theatre(Id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (MovieId) REFERENCES Movie(Id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+-- Create Ticket table
+CREATE TABLE Ticket (
+    Id INT PRIMARY KEY,
+    UserName NVARCHAR(255),
+    NumberOfSeats INT,
+    ShowTime NVARCHAR(50) NOT NULL,
+    TheatreId INT NOT NULL,
+    MovieId INT NOT NULL,
+    FOREIGN KEY (ShowTime, TheatreId, MovieId) REFERENCES Show(Time, TheatreId, MovieId) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+-- Create Seat table
+CREATE TABLE Seat (
+    Number INT NOT NULL,
+    ShowTime NVARCHAR(50) NOT NULL,
+    TheatreId INT NOT NULL,
+    MovieId INT NOT NULL,
+    TicketId INT,
+    Availability NVARCHAR(50) NOT NULL,
+    PRIMARY KEY (Number, ShowTime, TheatreId, MovieId),
+    FOREIGN KEY (ShowTime, TheatreId, MovieId) REFERENCES Show(Time, TheatreId, MovieId) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (TicketId) REFERENCES Ticket(Id) ON UPDATE CASCADE ON DELETE SET NULL
 );
