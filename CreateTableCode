@@ -51,6 +51,16 @@ CREATE TABLE Seat (
     FOREIGN KEY (ShowTime, TheatreId, MovieId) REFERENCES Show(Time, TheatreId, MovieId) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (TicketId) REFERENCES Ticket(Id) ON UPDATE CASCADE ON DELETE SET NULL
 );
+-- Create ShowMovieModel table
+CREATE TABLE ShowMovieModel (
+    Time NVARCHAR(50) NOT NULL,
+    TheatreId INT NOT NULL,
+    MovieId INT NOT NULL,
+    Name NVARCHAR(255) NOT NULL,
+    FOREIGN KEY (TheatreId) REFERENCES Theatre(Id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (MovieId) REFERENCES Movie(Id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 
 -- Insert data into Movie table
 INSERT INTO Movie (Id, Name, ImbdRating, Category, Genre, ReleaseDate, ActorName, ActressName, ThemePhotoPath) VALUES
