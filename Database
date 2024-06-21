@@ -1,0 +1,42 @@
+CREATE TABLE Movies (
+    Id INT PRIMARY KEY IDENTITY,
+    Title NVARCHAR(100) NOT NULL,
+    Genre NVARCHAR(50),
+    ReleaseDate DATE,
+    Duration INT);
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY,
+    UserName NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+    PasswordHash NVARCHAR(256) NOT NULL
+);
+ CREATE TABLE Bookings (
+    Id INT PRIMARY KEY IDENTITY,
+    UserId INT NOT NULL,
+    ShowId INT NOT NULL,
+    BookingDate DATETIME NOT NULL,
+    TotalAmount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (UserId) REFERENCES Users(Id),
+    FOREIGN KEY (ShowId) REFERENCES Shows(Id)
+);
+ CREATE TABLE Shows (
+    Id INT PRIMARY KEY IDENTITY,
+    MovieId INT NOT NULL,
+    TheaterId INT NOT NULL,
+    ShowTime DATETIME NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (MovieId) REFERENCES Movies(Id),
+    FOREIGN KEY (TheaterId) REFERENCES Theaters(Id)
+);
+ CREATE TABLE Theaters (
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL,
+    Location NVARCHAR(200) NOT NULL
+);
+CREATE TABLE Seats (
+    Id INT PRIMARY KEY IDENTITY,
+    TheaterId INT NOT NULL,
+    SeatNumber NVARCHAR(10) NOT NULL,
+    Type NVARCHAR(50) NOT NULL,
+    FOREIGN KEY (TheaterId) REFERENCES Theaters(Id)
+);
