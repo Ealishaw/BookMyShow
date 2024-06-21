@@ -62,3 +62,45 @@ Id int PRIMARY KEY IDENTITY(1,1),
     FOREIGN KEY (TheatreId) REFERENCES Theatre(Id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (MovieId) REFERENCES Movie(Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+
+
+
+-- Insert data into Movie table
+INSERT INTO Movie (Name, ImdbRating, Category, Genre, ReleaseDate, Duration, ActorName, ActressName, ThemePhotoPath) VALUES
+('Inception', 8.8, 'Sci-Fi', 'Thriller', '2010-07-16', 148, 'Leonardo DiCaprio', 'Ellen Page', 'path/to/inception.jpg'),
+('The Dark Knight', 9.0, 'Action', 'Drama', '2008-07-18', 152, 'Christian Bale', 'Maggie Gyllenhaal', 'path/to/darkknight.jpg');
+
+-- Insert data into Theatre table
+INSERT INTO Theatre (Name, City) VALUES
+('Regal Cinemas', 'New York'),
+('AMC Theatres', 'Los Angeles');
+
+-- Insert data into Show table
+INSERT INTO Show (Time, TheatreId, MovieId) VALUES
+('18:00', 1, 1),
+('21:00', 1, 1),
+('18:00', 2, 2),
+('21:00', 2, 2);
+
+-- Insert data into Ticket table
+INSERT INTO Ticket (UserName, NumberOfSeats, ShowTime, TheatreId, MovieId) VALUES
+('JohnDoe', 2, '18:00', 1, 1),
+('JaneSmith', 3, '21:00', 2, 2);
+
+-- Insert data into Seat table
+INSERT INTO Seat (ShowTime, TheatreId, MovieId, TicketId, Availability) VALUES
+('18:00', 1, 1, 1, 'Booked'),
+('18:00', 1, 1, 1, 'Booked'),
+('18:00', 1, 1, NULL, 'Available'),
+('21:00', 2, 2, 2, 'Booked'),
+('21:00', 2, 2, 2, 'Booked'),
+('21:00', 2, 2, 2, 'Booked'),
+('21:00', 2, 2, NULL, 'Available');
+
+-- Insert data into ShowMovieModel table
+INSERT INTO ShowMovieModel (Time, TheatreId, MovieId, Name) VALUES
+('18:00', 1, 1, 'Inception'),
+('21:00', 1, 1, 'Inception'),
+('18:00', 2, 2, 'The Dark Knight'),
+('21:00', 2, 2, 'The Dark Knight');
