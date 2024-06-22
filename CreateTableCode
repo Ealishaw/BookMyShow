@@ -63,8 +63,12 @@ Id int PRIMARY KEY IDENTITY(1,1),
     FOREIGN KEY (MovieId) REFERENCES Movie(Id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-
-
+-- Create SeatCategory table
+CREATE TABLE SeatCategory(
+	CategoryId INT PRIMARY KEY IDENTITY(1,1),
+	CategoryName NVARCHAR(50) NOT NULL,
+	PricePerCtg INT NOT NULL
+);
 
 -- Insert data into Movie table
 INSERT INTO Movie (Name, ImdbRating, Category, Genre, ReleaseDate, Duration, ActorName, ActressName, ThemePhotoPath) VALUES
@@ -104,3 +108,12 @@ INSERT INTO ShowMovieModel (Time, TheatreId, MovieId, Name) VALUES
 ('21:00', 1, 1, 'Inception'),
 ('18:00', 2, 2, 'The Dark Knight'),
 ('21:00', 2, 2, 'The Dark Knight');
+
+-- Insert data into SeatCategory table
+INSERT INTO SeatCategory VALUES('DIAMOND', 1100);
+INSERT INTO SeatCategory VALUES('PLATINUM', 800);
+INSERT INTO SeatCategory VALUES('GOLD', 650);
+INSERT INTO SeatCategory VALUES('SILVER', 300);
+
+-- ALTER Seat TABLE
+
