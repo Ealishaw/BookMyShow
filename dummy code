@@ -52,3 +52,23 @@ export class AddShowComponent implements OnInit {
 }
 
 Parameter 'x' implicitly has an 'any' type.
+// src/app/models.ts (or similar location)
+export interface Movie {
+  Id: number;
+  Name: string;
+  ImbdRating: number;
+  Category: string;
+  Genre: string;
+  ReleaseDate: string;
+  ActorName: string;
+  ActressName: string;
+  ThemePhotoPath: string;
+}
+
+export interface Theatre {
+  Id: number;
+  Name: string;
+  City: string;
+  NumberOfHalls: number;
+}
+
