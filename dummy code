@@ -14,3 +14,45 @@ Cannot find module '@angular/platform-server' or its corresponding type declarat
 Cannot find module '@nguniversal/module-map-ngfactory-loader' or its corresponding type declarations.
 Value at position 1 in the NgModule.imports of AppServerModule is not a reference
   Value could not be determined statically.
+
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR!
+npm ERR! While resolving: book-my-show-client@0.0.0
+npm ERR! Found: @angular/animations@17.3.11
+npm ERR! node_modules/@angular/animations
+npm ERR!   @angular/animations@"^17.3.0" from the root project
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer @angular/animations@"18.0.4" from @angular/platform-server@18.0.4
+npm ERR! node_modules/@angular/platform-server
+npm ERR!   @angular/platform-server@"*" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR!
+npm ERR!
+npm ERR! For a full report see:
+npm ERR! C:\Users\EJOHNY\AppData\Local\npm-cache\_logs\2024-06-22T06_56_44_263Z-eresolve-report.txt
+
+npm ERR! A complete log of this run can be found in: C:\Users\EJOHNY\AppData\Local\npm-cache\_logs\2024-06-22T06_56_44_263Z-debug-0.log
+PS C:\src\Ealishaw_Book_My_Show_Git\Book_My_Show_Client> npm install @angular/platform-server @nguniversal/module-map-ngfactory-loader
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR!
+npm ERR! While resolving: book-my-show-client@0.0.0
+npm ERR! Found: @angular/animations@17.3.11
+npm ERR! node_modules/@angular/animations
+npm ERR!   @angular/animations@"^17.3.0" from the root project
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer @angular/animations@"18.0.4" from @angular/platform-server@18.0.4
+npm ERR! node_modules/@angular/platform-server
+npm ERR!   @angular/platform-server@"*" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR!
+npm ERR!
