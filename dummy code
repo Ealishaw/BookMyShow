@@ -94,4 +94,15 @@ export class ViewSeatsComponent implements OnInit {
   }
 
 }
+
+if(this.seats[i-1].Availability == 'Available' && this.toBook[i-1] == 0)
+        {
+          this.toBook[i-1] = 1;
+          this.bookedSeats.push(i);
+          this.remainingSeats--;
+          if(this.userName.length > 0 && this.bookedSeats.length == this.numberOfRequiredSeats)
+          {
+            this.isButtonDisabled = false;
+          }
+        } 
 Object is possibly 'undefined'.
