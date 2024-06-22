@@ -51,4 +51,4 @@ export class AddShowComponent implements OnInit {
   }
 }
 
-Cannot find module 'src/app/ViewModels' or its corresponding type declarations.
+Parameter 'x' implicitly has an 'any' type.
