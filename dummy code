@@ -10,24 +10,5 @@ import { AppModule } from './app.module';
 })
 export class AppServerModule { }
 
-Cannot find module '@angular/platform-server' or its corresponding type declarations.
-Cannot find module '@nguniversal/module-map-ngfactory-loader' or its corresponding type declarations.
 Value at position 1 in the NgModule.imports of AppServerModule is not a reference
   Value could not be determined statically.
-
-npm ERR! code ERESOLVE
-npm ERR! ERESOLVE unable to resolve dependency tree
-npm ERR!
-npm ERR! While resolving: book-my-show-client@0.0.0
-npm ERR! Found: @angular/common@17.3.11
-npm ERR! node_modules/@angular/common
-npm ERR!   @angular/common@"^17.3.0" from the root project
-npm ERR!
-npm ERR! Could not resolve dependency:
-npm ERR! peer @angular/common@"^16.0.0 || ^16.1.0-next.0" from @nguniversal/express-engine@16.2.0
-npm ERR! node_modules/@nguniversal/express-engine
-npm ERR!   @nguniversal/express-engine@"*" from the root project
-npm ERR!
-npm ERR! Fix the upstream dependency conflict, or retry
-npm ERR! this command with --force or --legacy-peer-deps
-npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
