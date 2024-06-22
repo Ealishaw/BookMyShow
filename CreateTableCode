@@ -116,14 +116,10 @@ INSERT INTO SeatCategory VALUES('GOLD', 650);
 INSERT INTO SeatCategory VALUES('SILVER', 300);
 
 -- ALTER Seat TABLE
--- Step 1: Add CategoryId column to Seat table
 ALTER TABLE Seat
-ADD CategoryId INT;
+ADD SeatCategoryId INT;
 
--- Step 2: Add foreign key constraint to CategoryId column referencing SeatCategory(CategoryId)
+-- Step 2: Add foreign key constraint to SeatCategoryId column referencing SeatCategory(CategoryId)
 ALTER TABLE Seat
 ADD CONSTRAINT FK_Seat_SeatCategory
-FOREIGN KEY (CategoryId) REFERENCES SeatCategory(CategoryId)
-ON UPDATE NO ACTION;
-
-
+FOREIGN KEY (SeatCategoryId) REFERENCES SeatCategory(CategoryId);
