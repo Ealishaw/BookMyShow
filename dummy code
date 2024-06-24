@@ -1,47 +1,12 @@
-CREATE PROCEDURE InsertMovie
-    @Name NVARCHAR(255),
-    @ImdbRating FLOAT,
-    @Category NVARCHAR(255),
-    @Genre NVARCHAR(255),
-    @ReleaseDate DATE,
-    @Duration INT,
-    @ThemePhotoPath NVARCHAR(255),
-    @Result INT OUTPUT
-AS
-BEGIN
-    SET NOCOUNT ON;
+public int Add(Movie movie)
+{
+    using (var connection = _dapperContext.CreateConnection())
+    {
+
+        var sqlQuery = "\"BookMyShowDB\".spc_insertMovie";
+        int res = connection.QuerySingleOrDefault<int>(sqlQuery);
+        return res;
+    }
+   
     
-    BEGIN TRY
-        INSERT INTO Movie (Name, ImdbRating, Category, Genre, ReleaseDate, Duration, ThemePhotoPath)
-        VALUES (@Name, @ImdbRating, @Category, @Genre, @ReleaseDate, @Duration, @ThemePhotoPath);
-
-        -- Check if the row was inserted
-        IF SCOPE_IDENTITY() IS NOT NULL
-        BEGIN
-            SET @Result = 1;
-        END
-        ELSE
-        BEGIN
-            SET @Result = 0;
-        END
-    END TRY
-    BEGIN CATCH
-        -- If there is an error, set the result to 0
-        SET @Result = 0;
-    END CATCH
-END;
-GO
- DECLARE @Result INT;
-
-EXEC InsertMovie
-    @Name = 'Sample Movie',
-    @ImdbRating = 8.2,
-    @Category = 'Action',
-    @Genre = 'Adventure',
-    @ReleaseDate = '2024-06-24',
-    @Duration = 120,
-    @ThemePhotoPath = 'C:\Images\SampleMovie.jpg',
-    @Result = @Result OUTPUT;
-
--- Check the result
-SELECT @Result AS InsertionResult;
+}
