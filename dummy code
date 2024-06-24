@@ -3,23 +3,24 @@ public int Add(Movie movie)
     using (var connection = _dapperContext.CreateConnection())
     {
         var sqlQuery = "spc_insertMovie";
-        var parameters = new
-        {
-            Name = movie.Name,
-            ImdbRating = movie.ImdbRating,
-            Category = movie.Category,
-            Genre = movie.Genre,
-            ReleaseDate = movie.ReleaseDate,
-            Duration = movie.Duration,
-            ThemePhotoPath = movie.ThemePhotoPath
-        };
 
-        var result = connection.QuerySingleOrDefault<int>(
-            sqlQuery,
-            parameters,
-            commandType: System.Data.CommandType.StoredProcedure
-        );
+        var parameters = new DynamicParameters();
+        parameters.Add("Name", movie.Name, DbType.String);
+        parameters.Add("ImdbRating", movie.ImdbRating, DbType.Double);
+        parameters.Add("Category", movie.Category, DbType.String);
+        parameters.Add("Genre", movie.Genre, DbType.String);
+        parameters.Add("ReleaseDate", movie.ReleaseDate, DbType.Date);
+        parameters.Add("Duration", movie.Duration, DbType.Int32);
+        parameters.Add("ThemePhotoPath", movie.ThemePhotoPath, DbType.String);
 
+        // Define the output parameter
+        parameters.Add("Result", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+        connection.Execute(sqlQuery, parameters, commandType: CommandType.StoredProcedure);
+
+        // Retrieve the output value
+        int result = parameters.Get<int>("Result");
+        
         return result;
     }
 }
