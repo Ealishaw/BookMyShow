@@ -2,11 +2,24 @@ public int Add(Movie movie)
 {
     using (var connection = _dapperContext.CreateConnection())
     {
+        var sqlQuery = "spc_insertMovie";
+        var parameters = new
+        {
+            Name = movie.Name,
+            ImdbRating = movie.ImdbRating,
+            Category = movie.Category,
+            Genre = movie.Genre,
+            ReleaseDate = movie.ReleaseDate,
+            Duration = movie.Duration,
+            ThemePhotoPath = movie.ThemePhotoPath
+        };
 
-        var sqlQuery = "\"BookMyShowDB\".spc_insertMovie";
-        int res = connection.QuerySingleOrDefault<int>(sqlQuery);
-        return res;
+        var result = connection.QuerySingleOrDefault<int>(
+            sqlQuery,
+            parameters,
+            commandType: System.Data.CommandType.StoredProcedure
+        );
+
+        return result;
     }
-   
-    
 }
